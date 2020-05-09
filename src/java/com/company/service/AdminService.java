@@ -54,18 +54,10 @@ public class AdminService {
             log.log.info("7.Выход");
             switch (EnterDataService.returnInt(8)) {
                 case 1:
-                    try {
                         employeeService.addEmployee();
-                    } catch (SqlExceptionMessage sqlExceptionMessage) {
-                        sqlExceptionMessage.printStackTrace();
-                    }
                     break;
                 case 2:
-                    try {
                         employeeService.deleteEmployee();
-                    } catch (SqlExceptionMessage sqlExceptionMessage) {
-                        sqlExceptionMessage.printStackTrace();
-                    }
                     break;
                 case 3:
                     try {

@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class Country extends Shipping implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String country;
     private String region;
 }

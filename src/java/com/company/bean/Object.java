@@ -15,12 +15,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Object extends Shipping implements Serializable {
+public class Object implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idObject;
     private String description;
-    private String phoneNumber;
-    private int idCity;
+    private int phoneNumber;
     private String siteManager;
 }

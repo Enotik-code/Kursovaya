@@ -16,7 +16,7 @@ public class EmployeeService {
 
     int onHoliday, idPosition, userId, id;
 
-    public void addEmployee() throws SQLException, SqlExceptionMessage {
+    public void addEmployee() throws SQLException {
         showEmployee();
         userId = chooseEmployee();
         log.log.info(StringFile.ENTER_ON_HOLIDAY);
@@ -38,7 +38,7 @@ public class EmployeeService {
         endConnection();
     }
 
-    public void deleteEmployee() throws SqlExceptionMessage {
+    public void deleteEmployee(){
         showEmployee();
         id = chooseEmployee();
         try {

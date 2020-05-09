@@ -2,9 +2,10 @@ package com.company.service;
 
 import com.company.logger.Loggers;
 import com.company.string.StringFile;
-import com.company.views.menus.AdminMenu;
+import com.company.views.menus.AdminMenuView;
 import com.company.views.menus.EmployeeMenu;
-import com.company.views.menus.UserMenu;
+import com.company.views.service.UserService;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.sql.PreparedStatement;
@@ -12,11 +13,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.company.connection.ConnectionMeth.*;
+import static com.company.views.Main.getAlert;
+import static com.company.views.menus.UserMenuView.userMenu;
 
 public class RegistrationService {
     private String email, password, password2;
     static Loggers log = new Loggers(com.company.service.RegistrationService.class.getName());
     public static MenuService menuService = new MenuService();
+    public static com.company.views.menus.UserMenuView userMenu = new com.company.views.menus.UserMenuView();
 
     public void login() {
         log.log.info(StringFile.ENTER_EMAIL);
@@ -48,21 +52,29 @@ public class RegistrationService {
         log.log.error(StringFile.ERROR);
     }
 
+    static AdminMenuView a = new AdminMenuView();
     public static void loginView(String email, String password, Stage stage) throws SQLException {
         startConnection();
         String sql = "select * from user where email ='" + email + "'and password ='" + password + "'";
         ResultSet resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
             if (resultSet.getInt("id") > 1 && resultSet.getInt("id") < 50) {
-                EmployeeMenu.employeeMenu(resultSet.getInt("id"), stage);
+                getAlert(stage, Alert.AlertType.INFORMATION, "Login as Employee");
+                EmployeeMenu.employeeMenu(email,resultSet.getInt("id"), stage);
+                return;
             }
             if (resultSet.getInt("id") > 50 && resultSet.getInt("id") < 99) {
-                UserMenu.userMenu(resultSet.getInt("id"), stage);
+                getAlert(stage, Alert.AlertType.INFORMATION, "Login as User    ");
+                userMenu(email,resultSet.getInt("id"), stage);
+                return;
             }
             if (resultSet.getInt("id") == 100) {
-                AdminMenu.adminMenu(stage);
+                getAlert(stage, Alert.AlertType.INFORMATION, "Login as Admin");
+                a.adminMenu(stage);
+                return;
             }
         }
+            getAlert(stage, Alert.AlertType.ERROR, "Wrong login or password");
             resultSet.close();
             endConnection();
     }

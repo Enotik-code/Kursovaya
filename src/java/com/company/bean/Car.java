@@ -19,7 +19,7 @@ import java.io.Serializable;
 public class Car extends Shipping implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String model;
     private long tonnage;
     private String color;

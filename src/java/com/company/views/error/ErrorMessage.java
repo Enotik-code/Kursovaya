@@ -1,7 +1,7 @@
 package com.company.views.error;
 
 import com.company.string.StringFile;
-import com.company.views.menus.AdminMenu;
+import com.company.views.menus.AdminMenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -25,9 +25,9 @@ public class ErrorMessage {
     public void getErrorMessage(Stage stage){
         Label error = new Label(StringFile.ERROR);
         Button goBack = new Button("Go Back");
-        FlowPane root = new FlowPane(10, 10, error, goBack);
+        FlowPane root = new FlowPane(Orientation.VERTICAL,10, 10, error, goBack);
         root.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(root, 300, 150);
+        Scene scene = new Scene(root, 1366, 700);
         goBack.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -36,7 +36,7 @@ public class ErrorMessage {
         );
 
         stage.setScene(scene);
-        stage.setTitle("JavaFX");
+        stage.setTitle("LogisticCo");
         stage.show();
     }
 }

@@ -16,12 +16,12 @@ import java.io.Serializable;
 public class Shipping implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String pointOfDeparture;
-    private String destination;
-    private boolean performed;
+    private int id;
+    private int objectId;
     private int userId;
     private int typeId;
     private int classifierId;
-    private int carId;
+    private String destination;
+    private String pointOfDeparture;
+    private boolean performed;
 }

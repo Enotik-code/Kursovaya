@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Driver extends User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private boolean onHoliday;
     private String position;
     private int userId;

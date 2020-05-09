@@ -17,13 +17,13 @@ import java.util.Date;
 public class User extends Shipping implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String name;
     private String email;
     private String password;
     private String surname;
     private String patronymic;
     private String number;
-    private Date dateOfBirthday;
+    private String dateOfBirthday;
 
 }
